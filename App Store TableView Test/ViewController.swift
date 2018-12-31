@@ -25,17 +25,11 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
+    return 5
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCell
-    
-    cell.cellImage.layer.cornerRadius = 10
-    cell.cellView.layer.shadowColor = UIColor.darkGray.cgColor
-    cell.cellView.layer.shadowOpacity = 1
-    cell.cellView.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-    cell.cellView.layer.shadowRadius = 5
     
     return cell
   }
@@ -50,6 +44,15 @@ extension ViewController: UITableViewDelegate {
 class CustomCell: UITableViewCell {
   @IBOutlet weak var cellView: UIView!
   @IBOutlet weak var cellImage: UIImageView!
+  
+  override func draw(_ rect: CGRect) {
+    cellView.layer.shadowColor = UIColor.darkGray.cgColor
+    cellView.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+    cellView.layer.shadowRadius = 5
+    cellView.layer.shadowOpacity = 1
+    
+    cellImage.layer.cornerRadius = 10
+  }
   
 }
 
